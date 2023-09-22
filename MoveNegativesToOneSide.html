@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> moveNegativesToOneSide</title>
+</head>
+<body>
+    <script>
+          function moveNegativesToOneSide(arr) {
+  let left = 0; // Left pointer starting from the beginning of the array
+  let right = arr.length - 1; // Right pointer starting from the end of the array
+
+  while (left <= right) {
+    if (arr[left] < 0 && arr[right] < 0) {
+      // Both elements are negative, increment the left pointer
+      left++;
+    } else if (arr[left] >= 0 && arr[right] < 0) {
+      // Left element is positive, right element is negative, swap them
+      [arr[left], arr[right]] = [arr[right], arr[left]];
+      left++;
+      right--;
+    } else if (arr[left] >= 0 && arr[right] >= 0) {
+      // Both elements are positive, decrement the right pointer
+      right--;
+    } else {
+      // Left element is negative, right element is positive, increment both pointers(left ko plus plus right ko minus minus)
+      left++;
+      right--;
+    }
+  }
+}
+
+const arr = [-12, 11, -13, -5, 6, -7, 5, -3, -6];
+moveNegativesToOneSide(arr);
+console.log(arr); // Output: [-12, -13, -5, -7, -3, -6, 11, 6, 5]
+document.write(arr)
+    </script>
+</body>
+</html>
